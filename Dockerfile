@@ -44,9 +44,9 @@ COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modul
 
 COPY --chown=node:node . .
 
+RUN npx prisma generate
 # Run the build command which creates the production bundle
 RUN npm run build
-RUN npx prisma generate
 
 # Set NODE_ENV environment variable
 ENV NODE_ENV production
