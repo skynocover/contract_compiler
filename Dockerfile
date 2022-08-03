@@ -17,7 +17,6 @@ WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
 
 # Install app dependencies using the `npm ci` command instead of `npm install`
-COPY prisma ./prisma/
 RUN npm install
 
 # Bundle app source
@@ -44,6 +43,7 @@ COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modul
 
 COPY --chown=node:node . .
 
+COPY prisma ./prisma/
 RUN npx prisma generate
 # Run the build command which creates the production bundle
 RUN npm run build
