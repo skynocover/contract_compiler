@@ -14,6 +14,8 @@ async function bootstrap() {
 
   setupSwagger(app);
 
+  app.enableCors();
+
   // 使用官方設定檔
   const configService = app.get(ConfigService); // 取得 ConfigService
   const port = configService.get('PORT');
